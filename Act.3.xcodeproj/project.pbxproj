@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1782271B2323F49500F8764F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1782271A2323F49500F8764F /* main.cpp */; };
+		1782272D2323F7B300F8764F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1782272A2323F7B300F8764F /* main.cpp */; };
+		1782272E2323F7B300F8764F /* song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1782272B2323F7B300F8764F /* song.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +25,11 @@
 
 /* Begin PBXFileReference section */
 		178227172323F49500F8764F /* Act.3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Act.3; sourceTree = BUILT_PRODUCTS_DIR; };
-		1782271A2323F49500F8764F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		178227282323F7B300F8764F /* listsong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listsong.h; sourceTree = "<group>"; };
+		178227292323F7B300F8764F /* listexception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listexception.h; sourceTree = "<group>"; };
+		1782272A2323F7B300F8764F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1782272B2323F7B300F8764F /* song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = song.cpp; sourceTree = "<group>"; };
+		1782272C2323F7B300F8764F /* song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = song.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				178227192323F49500F8764F /* Act.3 */,
-				178227182323F49500F8764F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,12 +56,18 @@
 				178227172323F49500F8764F /* Act.3 */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		178227192323F49500F8764F /* Act.3 */ = {
 			isa = PBXGroup;
 			children = (
-				1782271A2323F49500F8764F /* main.cpp */,
+				178227292323F7B300F8764F /* listexception.h */,
+				178227282323F7B300F8764F /* listsong.h */,
+				1782272A2323F7B300F8764F /* main.cpp */,
+				1782272B2323F7B300F8764F /* song.cpp */,
+				1782272C2323F7B300F8764F /* song.h */,
+				178227182323F49500F8764F /* Products */,
 			);
 			path = Act.3;
 			sourceTree = "<group>";
@@ -118,7 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1782271B2323F49500F8764F /* main.cpp in Sources */,
+				1782272E2323F7B300F8764F /* song.cpp in Sources */,
+				1782272D2323F7B300F8764F /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

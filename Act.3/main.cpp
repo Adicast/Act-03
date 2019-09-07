@@ -1,15 +1,46 @@
-//
-//  main.cpp
-//  Act.3
-//
-//  Created by Claudia Castillo on 9/7/19.
-//  Copyright © 2019 Adicast. All rights reserved.
-//
-
 #include <iostream>
+#include <string>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+#include "listsong.h"
+#include "song.h"
+
+using namespace std;
+
+int main()
+{
+    listSong<Song> top50;
+    Song mySong;
+
+    string data;
+    char option;
+    do{
+        cout<<"Nombre de la cancion:"<<endl;
+        getline(cin,data);
+        mySong.setName(data);
+
+        cout<<"Nombre del Artista:"<<endl;
+        getline(cin,data);
+        mySong.setArtist(data);
+
+        cout<<"Numero de Ranking:"<<endl;
+        getline(cin,data);
+        mySong.setRanking(data);
+
+        cout<<"Quiere agregar otra cancion? (s/n)"<<endl;
+        cin>>option;
+        cin.ignore();
+
+        top50.insertData(top50.getLastPos(),mySong);
+
+    }while(option== 's');
+
+    cout<<endl;
+
+    cout<<"Contenido de la lista:"<<endl;
+
+    top50.print();
+
+    cout<<endl;
+
+
 }
