@@ -7,37 +7,36 @@
 
 template<class T, int ARRAYSIZE = 50>
 class listSong{
-private:
+    
+    private:
+        T data[ARRAYSIZE];
+        int last;
+        bool isValidPos(const int&);
 
-    T data[ARRAYSIZE];
-    int last;
+    public:
 
-    bool isValidPos(const int&);
+        void initialize();
 
-public:
+        bool isEmpty();
+        bool isFull();
 
-    void initialize();
+        void insertData(const int&, const T&);
+        void deleteData(const int&);
 
-    bool isEmpty();
-    bool isFull();
+        int getFirstPos();
+        int getLastPos();
+        int getPrevPos(const int&);
+        int getNextPos(const int&);
 
-    void insertData(const int&, const T&);
-    void deleteData(const int&);
+        int findData(const T&);
 
-    int getFirstPos();
-    int getLastPos();
-    int getPrevPos(const int&);
-    int getNextPos(const int&);
+        int retrieve(const T&);
 
-    int findData(const T&);
+        void sortData();
 
-    int retrieve(const T&);
+        void print();
 
-    void sortData();
-
-    void print();
-
-    void deleteAll();
+        void deleteAll();
 
 
 };
@@ -76,14 +75,14 @@ void listSong<T, ARRAYSIZE>::insertData(const int&p, const T&e)
     if(isFull())
     {
         throw ListException("Desbordamiento de datos, insertData");
-    }
-   if(p!=-1 and !isValidPos(p))
-     {
+    } else if (p!=-1 and !isValidPos(p)){
        throw ListException("Posicion invalida, insertData");
-     }
+    }
+    
      int i(last);
-     while(i>p)
-     {
+    
+     while(i>p){
+         
          data[i+1]=data[i];
          i--;
      }

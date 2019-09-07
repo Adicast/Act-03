@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    listSong<Song> top50;
+    listSong<Song>* top50 = new listSong<Song>();
     Song mySong;
 
     string data;
@@ -25,12 +25,15 @@ int main()
         cout<<"Numero de Ranking:"<<endl;
         getline(cin,data);
         mySong.setRanking(data);
+        
+        //TODO: delte this.
+        cout<<"my song: "<<mySong.toString()<<endl;
 
         cout<<"Quiere agregar otra cancion? (s/n)"<<endl;
         cin>>option;
         cin.ignore();
 
-        top50.insertData(top50.getLastPos(),mySong);
+        top50->insertData(top50->getLastPos(),mySong);
 
     }while(option== 's');
 
@@ -38,7 +41,7 @@ int main()
 
     cout<<"Contenido de la lista:"<<endl;
 
-    top50.print();
+    top50->print();
 
     cout<<endl;
 
