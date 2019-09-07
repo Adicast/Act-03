@@ -76,7 +76,7 @@ void listSong<T, ARRAYSIZE>::insertData(const int&p, const T&e)
     {
         throw ListException("Desbordamiento de datos, insertData");
     } else if (p!=-1 and !isValidPos(p)){
-       throw ListException("Posicion invalida, insertData");
+        throw ListException("Posicion invalida, insertData");
     }
     
      int i(last);

@@ -8,30 +8,50 @@ using namespace std;
 
 listSong<Song>* top50 = new listSong<Song>();
 
+void mensajeListaLlena(){
+    cout<<"-----------"<<endl;
+    cout<<"Lista llena"<<endl;
+    cout<<"-----------"<<endl;
+}
+
 void agregar(){
     
     Song mySong;
     string data;
+    char option;
     
-     cin.ignore();
-    
-    //Ceate option
-    cout<<"Nombre de la cancion:"<<endl;
-    getline(cin,data);
-    mySong.setName(data);
-    
-    cout<<"Nombre del Artista:"<<endl;
-    getline(cin,data);
-    mySong.setArtist(data);
-    
-    cout<<"Numero de Ranking:"<<endl;
-    getline(cin,data);
-    mySong.setRanking(data);
-    
-    //TODO: delte this.
-    cout<<"my song: "<<mySong.toString()<<endl;
-    
-    top50->insertData(top50->getLastPos(),mySong);
+    do {
+        cin.ignore();
+        
+        top50->print();
+        
+        //Ceate option
+        cout<<"Nombre de la cancion:"<<endl;
+        getline(cin,data);
+        mySong.setName(data);
+        
+        cout<<"Nombre del Artista:"<<endl;
+        getline(cin,data);
+        mySong.setArtist(data);
+        
+        cout<<"Numero de Ranking:"<<endl;
+        getline(cin,data);
+        mySong.setRanking(data);
+        
+        //Se agraga la cancino a la lista.
+        top50->insertData(top50->getLastPos(),mySong);
+        
+        //Si no está llena pregunta si quieres agragar mas.
+        if(!top50->isFull()){
+            cout<<"Quiere agregar otra cancion? (s/n)"<<endl;
+            cin>>option;
+        } else {
+            mensajeListaLlena();
+            option = 'c';// cualquier valor que no se a s
+        }
+        
+    } while(option == 's');
+ 
 }
 
 int main()
@@ -56,10 +76,11 @@ int main()
         switch(option){
             case 'a':{
                
-                agregar();
-                cout<<"Quiere agregar otra cancion? (s/n)"<<endl;
-                cin>>option;
-                
+                if(!top50->isFull()){
+                    agregar();
+                } else {
+                    mensajeListaLlena();
+                }
                 
             } break;
             case 'o':{} break;
