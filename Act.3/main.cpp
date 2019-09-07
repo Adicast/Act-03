@@ -6,44 +6,67 @@
 
 using namespace std;
 
+listSong<Song>* top50 = new listSong<Song>();
+
+void agregar(){
+    
+    Song mySong;
+    string data;
+    
+     cin.ignore();
+    
+    //Ceate option
+    cout<<"Nombre de la cancion:"<<endl;
+    getline(cin,data);
+    mySong.setName(data);
+    
+    cout<<"Nombre del Artista:"<<endl;
+    getline(cin,data);
+    mySong.setArtist(data);
+    
+    cout<<"Numero de Ranking:"<<endl;
+    getline(cin,data);
+    mySong.setRanking(data);
+    
+    //TODO: delte this.
+    cout<<"my song: "<<mySong.toString()<<endl;
+    
+    top50->insertData(top50->getLastPos(),mySong);
+}
+
 int main()
 {
-    listSong<Song>* top50 = new listSong<Song>();
-    Song mySong;
-
-    string data;
+    top50->initialize();
+    
     char option;
     do{
-        cout<<"Nombre de la cancion:"<<endl;
-        getline(cin,data);
-        mySong.setName(data);
-
-        cout<<"Nombre del Artista:"<<endl;
-        getline(cin,data);
-        mySong.setArtist(data);
-
-        cout<<"Numero de Ranking:"<<endl;
-        getline(cin,data);
-        mySong.setRanking(data);
         
-        //TODO: delte this.
-        cout<<"my song: "<<mySong.toString()<<endl;
-
-        cout<<"Quiere agregar otra cancion? (s/n)"<<endl;
+        //Menu
+        cout<<"Radiodifusora"<<endl;
+        top50->print();
+        
+        cout<<"Elije una opcion: "<<endl;
+        cout<<"a)  Agragar cancion"<<endl;
+        cout<<"o)  Ordenar"<<endl;
+        cout<<"e)  Eliminar"<<endl;
+        cout<<"S)  Salir"<<endl<<endl;
+        
         cin>>option;
-        cin.ignore();
+        
+        switch(option){
+            case 'a':{
+               
+                agregar();
+                cout<<"Quiere agregar otra cancion? (s/n)"<<endl;
+                cin>>option;
+                
+                
+            } break;
+            case 'o':{} break;
+            case 'e':{} break;
+            case 'S':{ return 0; } break;
+        }
 
-        top50->insertData(top50->getLastPos(),mySong);
-
-    }while(option== 's');
-
-    cout<<endl;
-
-    cout<<"Contenido de la lista:"<<endl;
-
-    top50->print();
-
-    cout<<endl;
-
+    }while(true);
 
 }

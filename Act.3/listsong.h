@@ -5,7 +5,7 @@
 #include "listexception.h"
 #include "song.h"
 
-template<class T, int ARRAYSIZE = 50>
+template<class T, int ARRAYSIZE = 3>//TODO chage max to 500
 class listSong{
     
     private:
@@ -167,12 +167,19 @@ void listSong<T, ARRAYSIZE>::sortData()
 template<class T, int ARRAYSIZE>
 void listSong<T, ARRAYSIZE>::print()
 {
+    
+    if(isEmpty()){
+        cout<<"\tLista vacia"<<endl<<endl;
+        return;
+    }
+    
     int i(0);
     while(i<=last)
     {
-        cout<<data[i].toString()<<endl;
+        cout<<"\t"<<data[i].toString()<<endl;
         i++;
     }
+   
 }
 
 template<class T, int ARRAYSIZE>
