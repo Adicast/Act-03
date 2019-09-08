@@ -5,7 +5,7 @@
 #include "listexception.h"
 #include "song.h"
 
-template<class T, int ARRAYSIZE = 3>//TODO chage max to 500
+template<class T, int ARRAYSIZE = 50>
 class listSong{
     
     private:
@@ -93,17 +93,27 @@ void listSong<T, ARRAYSIZE>::insertData(const int&p, const T&e)
 template<class T, int ARRAYSIZE>
 void listSong<T, ARRAYSIZE>::deleteData(const int&p)
 {
-    if(!isValidPos(p))
+    /*if(!isValidPos(p))
     {
         throw ListException("Posicion Invalida, deleteData");
+    }*/
+    
+    for(int i = 0; i < last; i++) {
+        cout<<"ranking: "<<data[i].getRanking()<<endl;
     }
-    int i(p);
-    while(i<last)
-    {
-        data[i]=data[i+1];
-        i++;
-    }
-    last--;
+    
+    /*for(int i(0);i<=49;i++){
+        if(data[i].getRanking() == p){
+            int i(p);
+            while(i<last)
+            {
+                data[i]=data[i+1];
+                i++;
+            }
+            last--;
+        }
+        
+    }*/
 }
 
 template<class T, int ARRAYSIZE>
@@ -145,7 +155,7 @@ int listSong<T, ARRAYSIZE>::getNextPos(const int&p)
 template<class T, int ARRAYSIZE>
 int listSong<T, ARRAYSIZE>::findData(const T&p)
 {
-
+    
 }
 
 template<class T, int ARRAYSIZE>
@@ -161,7 +171,22 @@ int listSong<T, ARRAYSIZE>::retrieve(const T&p)
 template<class T, int ARRAYSIZE>
 void listSong<T, ARRAYSIZE>::sortData()
 {
-    ///Pendiente
+    if(isEmpty()){
+        cout<<"Lista vacia - ingresa canciones para luego ordenarlas"<<endl<<endl;
+        return;
+    }
+    
+    T aux;
+    
+    for(int i = 0; i < last + 1 ; i++) {
+        for(int j = 0; j < last ; j++){
+            if(stoi(data[j].getRanking()) > stoi(data[j + 1].getRanking())) {
+                aux = data[j + 1];
+                data [j +1] = data[j];
+                data[j] = aux;
+            }
+        }
+    }
 }
 
 template<class T, int ARRAYSIZE>

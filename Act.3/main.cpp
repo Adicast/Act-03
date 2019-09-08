@@ -40,6 +40,7 @@ void agregar(){
         
         //Se agraga la cancino a la lista.
         top50->insertData(top50->getLastPos(),mySong);
+        top50->sortData();
         
         //Si no está llena pregunta si quieres agragar mas.
         if(!top50->isFull()){
@@ -52,6 +53,12 @@ void agregar(){
         
     } while(option == 's');
  
+}
+void eliminar(){
+    int p;
+    cout<<"Escriba el numero de Ranking de la cancion a eliminar: ";
+    cin>>p;
+    top50->deleteData(p);
 }
 
 int main()
@@ -67,7 +74,6 @@ int main()
         
         cout<<"Elije una opcion: "<<endl;
         cout<<"a)  Agragar cancion"<<endl;
-        cout<<"o)  Ordenar"<<endl;
         cout<<"e)  Eliminar"<<endl;
         cout<<"S)  Salir"<<endl<<endl;
         
@@ -83,8 +89,10 @@ int main()
                 }
                 
             } break;
-            case 'o':{} break;
-            case 'e':{} break;
+            case 'e':{
+                eliminar();
+                
+            } break;
             case 'S':{ return 0; } break;
         }
 
