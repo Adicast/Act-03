@@ -55,11 +55,24 @@ void agregar(){
  
 }
 void eliminar(){
-    int p;
+    top50->print();
+    
+    string p;
     cout<<"Escriba el numero de Ranking de la cancion a eliminar: ";
-    cin>>p;
-    top50->deleteData(p);
+    cin.ignore();
+    getline(cin,p);
+    
+    int indice = top50->findData(p);
+    
+    if(indice > -1){
+        top50->deleteData(indice);
+    } else {
+        cout<<"No. de ranking no encontrado"<<endl<<endl;
+    }
+    
 }
+
+
 
 int main()
 {
@@ -90,7 +103,12 @@ int main()
                 
             } break;
             case 'e':{
-                eliminar();
+                
+                if(!top50->isEmpty()){
+                    eliminar();
+                } else {
+                    cout<<"Lista vacia, agrega canciones primero"<<endl<<endl;
+                }
                 
             } break;
             case 'S':{ return 0; } break;

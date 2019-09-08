@@ -28,7 +28,7 @@ class listSong{
         int getPrevPos(const int&);
         int getNextPos(const int&);
 
-        int findData(const T&);
+        int findData(const std::string&);
 
         int retrieve(const T&);
 
@@ -93,27 +93,17 @@ void listSong<T, ARRAYSIZE>::insertData(const int&p, const T&e)
 template<class T, int ARRAYSIZE>
 void listSong<T, ARRAYSIZE>::deleteData(const int&p)
 {
-    /*if(!isValidPos(p))
+    if(!isValidPos(p))
     {
         throw ListException("Posicion Invalida, deleteData");
-    }*/
-    
-    for(int i = 0; i < last; i++) {
-        cout<<"ranking: "<<data[i].getRanking()<<endl;
     }
-    
-    /*for(int i(0);i<=49;i++){
-        if(data[i].getRanking() == p){
-            int i(p);
-            while(i<last)
-            {
-                data[i]=data[i+1];
-                i++;
-            }
-            last--;
-        }
-        
-    }*/
+    int i(p);
+    while(i<last)
+    {
+        data[i]=data[i+1];
+        i++;
+    }
+    last--;
 }
 
 template<class T, int ARRAYSIZE>
@@ -153,9 +143,17 @@ int listSong<T, ARRAYSIZE>::getNextPos(const int&p)
 }
 
 template<class T, int ARRAYSIZE>
-int listSong<T, ARRAYSIZE>::findData(const T&p)
+int listSong<T, ARRAYSIZE>::findData(const string&r)
 {
+    cout<<"paramether ou for: "<<r<<endl;
     
+    for(int i = 0; i <= last; i++){
+        if( stoi(data[i].getRanking()) == stoi(r)){
+            return i;
+        }
+    }
+    
+    return -1;
 }
 
 template<class T, int ARRAYSIZE>
